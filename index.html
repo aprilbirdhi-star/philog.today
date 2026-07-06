@@ -447,15 +447,35 @@
         </section>
 
         <!-- Section 3.2: AI City Builders 스터디 자료 (AI City Builders Study) -->
-        <section id="aicitybuilders-study" class="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+        <section id="aicitybuilders-study" class="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300 relative">
             <div class="max-w-6xl mx-auto px-6">
-                <div class="text-center mb-16">
+                <div class="text-center mb-16 relative z-10">
                     <span class="text-sm font-bold tracking-wider uppercase text-emerald-600 dark:text-brand-light code-font">AI City Builders Study</span>
                     <h2 class="text-3xl md:text-4xl font-bold mt-2">AI 시티 빌더즈 학습 아카이브</h2>
                     <p class="text-slate-500 dark:text-slate-400 mt-2">AI 1인 기업가로 거듭나기 위한 자동화 및 에이전트 구축 스터디 기록입니다.</p>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                <!-- 자물쇠가 걸렸을 때 보일 보안 레이어 구조 -->
+                <div id="study-lock-overlay" class="absolute inset-0 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-md z-30 flex flex-col justify-center items-center p-6 transition-all duration-500">
+                    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-2xl shadow-2xl text-center max-w-sm">
+                        <div class="w-16 h-16 bg-red-100 dark:bg-red-950/50 text-red-500 rounded-full flex items-center justify-center text-2xl mx-auto mb-4 animate-bounce">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">🔒 프라이빗 스터디 영역</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-6">
+                            AI City Builders 스터디 학습 자료와 추천 강의 정보입니다. 개발자용 마스터 비밀키 패스코드가 필요합니다.
+                        </p>
+                        <div class="flex gap-2">
+                            <input id="study-passcode-input" type="password" placeholder="Passcode (예: 1234)" class="flex-grow px-4 py-2 border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 rounded-xl text-center font-bold tracking-widest text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900 dark:text-white">
+                            <button id="study-unlock-btn" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold shadow transition-all">
+                                잠금해제
+                            </button>
+                        </div>
+                        <p id="study-unlock-error" class="text-[10px] text-red-500 font-semibold mt-2 hidden">올바르지 않은 패스코드입니다.</p>
+                    </div>
+                </div>
+
+                <div id="study-content" class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch filter blur-lg transition-all duration-500 select-none pointer-events-none">
                     <!-- 왼쪽 칸: 유튜브 강의 영상 임베드 -->
                     <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between">
                         <div>
@@ -478,9 +498,14 @@
                     <!-- 오른쪽 칸: 스터디 교육자료 및 학습 로드맵 -->
                     <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between">
                         <div class="space-y-6">
-                            <h3 class="text-xl font-bold flex items-center border-b border-slate-100 dark:border-slate-800 pb-3 text-slate-800 dark:text-slate-200">
-                                <i class="fa-solid fa-graduation-cap text-indigo-500 mr-2"></i> 스터디 커리큘럼 &amp; 교육자료
-                            </h3>
+                            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-3">
+                                <h3 class="text-xl font-bold flex items-center text-slate-800 dark:text-slate-200">
+                                    <i class="fa-solid fa-graduation-cap text-indigo-500 mr-2"></i> 스터디 커리큘럼 &amp; 교육자료
+                                </h3>
+                                <button id="study-lock-btn" class="text-xs px-2 py-1 text-slate-400 hover:text-red-500 transition-colors" title="다시 잠그기">
+                                    <i class="fa-solid fa-lock-open mr-1"></i> 잠금 활성화
+                                </button>
+                            </div>
 
                             <div class="space-y-4">
                                 <!-- 자료 1 -->
@@ -1103,6 +1128,45 @@
         if (savedLockState === 'true') {
             privateLockOverlay.classList.add('hidden');
             privateContent.classList.remove('blur-lg', 'select-none', 'pointer-events-none');
+        }
+
+        // ------------------ 4.5. AI City Builders 스터디 잠금/해제 ------------------
+        const studyLockOverlay = document.getElementById('study-lock-overlay');
+        const studyPasscodeInput = document.getElementById('study-passcode-input');
+        const studyUnlockBtn = document.getElementById('study-unlock-btn');
+        const studyUnlockError = document.getElementById('study-unlock-error');
+        const studyContent = document.getElementById('study-content');
+        const studyLockBtn = document.getElementById('study-lock-btn');
+
+        studyUnlockBtn.addEventListener('click', () => {
+            const code = studyPasscodeInput.value.trim();
+            if (code === '1234') {
+                studyLockOverlay.classList.add('hidden');
+                studyContent.classList.remove('blur-lg', 'select-none', 'pointer-events-none');
+                studyUnlockError.classList.add('hidden');
+                studyPasscodeInput.value = '';
+                localStorage.setItem('eruda_study_unlocked', 'true');
+            } else {
+                studyUnlockError.classList.remove('hidden');
+            }
+        });
+
+        studyPasscodeInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                studyUnlockBtn.click();
+            }
+        });
+
+        studyLockBtn.addEventListener('click', () => {
+            studyLockOverlay.classList.remove('hidden');
+            studyContent.classList.add('blur-lg', 'select-none', 'pointer-events-none');
+            localStorage.removeItem('eruda_study_unlocked');
+        });
+
+        const savedStudyLockState = localStorage.getItem('eruda_study_unlocked');
+        if (savedStudyLockState === 'true') {
+            studyLockOverlay.classList.add('hidden');
+            studyContent.classList.remove('blur-lg', 'select-none', 'pointer-events-none');
         }
 
         // ------------------ 5. MindLog AI 모의 분석 인터랙션 ------------------
