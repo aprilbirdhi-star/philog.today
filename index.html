@@ -95,10 +95,10 @@
                 <a href="#progress" class="hover:text-emerald-500 transition-colors">투두 &amp; 비서</a>
                 <a href="#calendar-sec" class="hover:text-emerald-500 transition-colors">일정 달력</a>
                 <a href="#timeline" class="hover:text-emerald-500 transition-colors">타임라인</a>
-                <a href="#aicitybuilders-study" class="hover:text-emerald-500 transition-colors">스터디</a>
-                <a href="#dev-ops" class="hover:text-emerald-500 transition-colors">인프라비용</a>
                 <a href="#blog" class="hover:text-emerald-500 transition-colors">생각블로그</a>
                 <a href="#guestbook" class="hover:text-emerald-500 transition-colors">방명록</a>
+                <a href="#aicitybuilders-study" class="hover:text-emerald-500 transition-colors">스터디</a>
+                <a href="#dev-ops" class="hover:text-emerald-500 transition-colors">인프라비용</a>
             </nav>
 
             <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-colors">
@@ -446,6 +446,133 @@
             </div>
         </section>
 
+
+
+        <!-- Section 4: 생각 블로그 (Blog Cards) -->
+        <section id="blog" class="py-24 bg-slate-100/50 dark:bg-slate-900/50 transition-colors duration-300">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="flex flex-wrap justify-between items-end mb-12 gap-4">
+                    <div>
+                        <span class="text-sm font-bold tracking-wider uppercase text-emerald-600 dark:text-brand-light code-font">My Thoughts</span>
+                        <h2 class="text-3xl md:text-4xl font-bold mt-2">일상과 기술에 관한 단상</h2>
+                    </div>
+                    <a href="#" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white rounded-lg text-sm font-semibold shadow transition-all">
+                        블로그 전체글 보기 <i class="fa-solid fa-angles-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- 블로그 카드 그리드 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- 카드 1 -->
+                    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                        <div class="p-6 flex-grow">
+                            <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-3">
+                                <span class="code-font"><i class="fa-regular fa-folder-open mr-1"></i> 에세이/일상</span>
+                                <span>2026.07.06</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 hover:text-emerald-500 dark:hover:text-brand-light transition-colors">
+                                <a href="#">개발자가 블로그를 직접 짜서 운영해야 하는 확실한 이유</a>
+                            </h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3">
+                                이미 완성도 높은 상용 플랫폼이 많음에도 나만의 소스 코드로 직접 빌드된 웹페이지를 가졌을 때 찾아오는 기술적 자유로움에 대한 일지입니다.
+                            </p>
+                        </div>
+                        <div class="p-6 pt-0 border-t border-slate-100 dark:border-slate-800">
+                            <a href="#" class="text-xs font-semibold text-emerald-600 dark:text-brand-light hover:underline">
+                                계속 읽기 <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 카드 2 -->
+                    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                        <div class="p-6 flex-grow">
+                            <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-3">
+                                <span class="code-font"><i class="fa-regular fa-folder-open mr-1"></i> 기술/학습</span>
+                                <span>2026.06.28</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 hover:text-emerald-500 dark:hover:text-brand-light transition-colors">
+                                <a href="#">인공지능 도구(AI)를 사용하면서 변한 나의 개발 루틴</a>
+                            </h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3">
+                                구글링에 의존하던 에러 분석 과정이 AI 비서와 소통하는 방식으로 바뀌면서 코딩 속도와 기획의 전반적인 만족도가 왜 3배 이상 늘었는지 기록해 보았습니다.
+                            </p>
+                        </div>
+                        <div class="p-6 pt-0 border-t border-slate-100 dark:border-slate-800">
+                            <a href="#" class="text-xs font-semibold text-emerald-600 dark:text-brand-light hover:underline">
+                                계속 읽기 <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 카드 3 -->
+                    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                        <div class="p-6 flex-grow">
+                            <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-3">
+                                <span class="code-font"><i class="fa-regular fa-folder-open mr-1"></i> 일상/일기</span>
+                                <span>2026.06.14</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 hover:text-emerald-500 dark:hover:text-brand-light transition-colors">
+                                <a href="#">초심으로 돌아가는 헬스장 3개월 등록기</a>
+                            </h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3">
+                                허리와 목 건강을 위해 결심한 일상의 피트니스 도전기입니다. 개발자에게 가장 필요한 기술 스택은 어쩌면 튼튼한 하체 근력일지도 모르겠습니다.
+                            </p>
+                        </div>
+                        <div class="p-6 pt-0 border-t border-slate-100 dark:border-slate-800">
+                            <a href="#" class="text-xs font-semibold text-emerald-600 dark:text-brand-light hover:underline">
+                                계속 읽기 <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: 방명록 (Guestbook) -->
+        <section id="guestbook" class="py-24 transition-colors duration-300">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-12">
+                    <span class="text-sm font-bold tracking-wider uppercase text-emerald-600 dark:text-brand-light code-font">Guestbook</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-2">응원 한 줄 남기기</h2>
+                    <p class="text-slate-500 dark:text-slate-400 mt-2">들러주신 흔적을 방명록으로 남겨주세요. (로컬 브라우저에 저장됩니다)</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- 방명록 작성 폼 -->
+                    <div class="md:col-span-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-lg h-fit">
+                        <form id="guestbook-form" class="space-y-4">
+                            <div>
+                                <label for="guest-name" class="block text-xs font-semibold text-slate-500 mb-1">이름</label>
+                                <input type="text" id="guest-name" required placeholder="홍길동" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-500 mb-1">캐릭터 아이콘</label>
+                                <div class="flex gap-2 justify-between">
+                                    <button type="button" class="emoji-btn p-2 rounded-lg border border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-lg flex-1 transition-all" data-emoji="💻">💻</button>
+                                    <button type="button" class="emoji-btn p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-lg flex-1 transition-all" data-emoji="🚀">🚀</button>
+                                    <button type="button" class="emoji-btn p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-lg flex-1 transition-all" data-emoji="☕">☕</button>
+                                    <button type="button" class="emoji-btn p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-lg flex-1 transition-all" data-emoji="🔥">🔥</button>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="guest-msg" class="block text-xs font-semibold text-slate-500 mb-1">메시지</label>
+                                <textarea id="guest-msg" required placeholder="응원의 한마디를 남겨주세요!" rows="3" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none transition-colors"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white rounded-lg text-sm font-semibold transition-all">남기기</button>
+                        </form>
+                    </div>
+
+                    <!-- 방명록 목록 -->
+                    <div class="md:col-span-2 space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar" id="guestbook-list">
+                        <!-- 동적 추가 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Section 3.2: AI City Builders 스터디 자료 (AI City Builders Study) -->
         <section id="aicitybuilders-study" class="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300 relative">
             <div class="max-w-6xl mx-auto px-6">
@@ -700,131 +827,6 @@
                         </div>
                     </div>
 
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 4: 생각 블로그 (Blog Cards) -->
-        <section id="blog" class="py-24 bg-slate-100/50 dark:bg-slate-900/50 transition-colors duration-300">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="flex flex-wrap justify-between items-end mb-12 gap-4">
-                    <div>
-                        <span class="text-sm font-bold tracking-wider uppercase text-emerald-600 dark:text-brand-light code-font">My Thoughts</span>
-                        <h2 class="text-3xl md:text-4xl font-bold mt-2">일상과 기술에 관한 단상</h2>
-                    </div>
-                    <a href="#" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white rounded-lg text-sm font-semibold shadow transition-all">
-                        블로그 전체글 보기 <i class="fa-solid fa-angles-right ml-2"></i>
-                    </a>
-                </div>
-
-                <!-- 블로그 카드 그리드 -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    
-                    <!-- 카드 1 -->
-                    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
-                        <div class="p-6 flex-grow">
-                            <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-3">
-                                <span class="code-font"><i class="fa-regular fa-folder-open mr-1"></i> 에세이/일상</span>
-                                <span>2026.07.06</span>
-                            </div>
-                            <h3 class="text-xl font-bold mb-3 hover:text-emerald-500 dark:hover:text-brand-light transition-colors">
-                                <a href="#">개발자가 블로그를 직접 짜서 운영해야 하는 확실한 이유</a>
-                            </h3>
-                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3">
-                                이미 완성도 높은 상용 플랫폼이 많음에도 나만의 소스 코드로 직접 빌드된 웹페이지를 가졌을 때 찾아오는 기술적 자유로움에 대한 일지입니다.
-                            </p>
-                        </div>
-                        <div class="p-6 pt-0 border-t border-slate-100 dark:border-slate-800">
-                            <a href="#" class="text-xs font-semibold text-emerald-600 dark:text-brand-light hover:underline">
-                                계속 읽기 <i class="fa-solid fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- 카드 2 -->
-                    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
-                        <div class="p-6 flex-grow">
-                            <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-3">
-                                <span class="code-font"><i class="fa-regular fa-folder-open mr-1"></i> 기술/학습</span>
-                                <span>2026.06.28</span>
-                            </div>
-                            <h3 class="text-xl font-bold mb-3 hover:text-emerald-500 dark:hover:text-brand-light transition-colors">
-                                <a href="#">인공지능 도구(AI)를 사용하면서 변한 나의 개발 루틴</a>
-                            </h3>
-                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3">
-                                구글링에 의존하던 에러 분석 과정이 AI 비서와 소통하는 방식으로 바뀌면서 코딩 속도와 기획의 전반적인 만족도가 왜 3배 이상 늘었는지 기록해 보았습니다.
-                            </p>
-                        </div>
-                        <div class="p-6 pt-0 border-t border-slate-100 dark:border-slate-800">
-                            <a href="#" class="text-xs font-semibold text-emerald-600 dark:text-brand-light hover:underline">
-                                계속 읽기 <i class="fa-solid fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- 카드 3 -->
-                    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
-                        <div class="p-6 flex-grow">
-                            <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-3">
-                                <span class="code-font"><i class="fa-regular fa-folder-open mr-1"></i> 일상/일기</span>
-                                <span>2026.06.14</span>
-                            </div>
-                            <h3 class="text-xl font-bold mb-3 hover:text-emerald-500 dark:hover:text-brand-light transition-colors">
-                                <a href="#">초심으로 돌아가는 헬스장 3개월 등록기</a>
-                            </h3>
-                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3">
-                                허리와 목 건강을 위해 결심한 일상의 피트니스 도전기입니다. 개발자에게 가장 필요한 기술 스택은 어쩌면 튼튼한 하체 근력일지도 모르겠습니다.
-                            </p>
-                        </div>
-                        <div class="p-6 pt-0 border-t border-slate-100 dark:border-slate-800">
-                            <a href="#" class="text-xs font-semibold text-emerald-600 dark:text-brand-light hover:underline">
-                                계속 읽기 <i class="fa-solid fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 5: 방명록 (Guestbook) -->
-        <section id="guestbook" class="py-24 transition-colors duration-300">
-            <div class="max-w-4xl mx-auto px-6">
-                <div class="text-center mb-12">
-                    <span class="text-sm font-bold tracking-wider uppercase text-emerald-600 dark:text-brand-light code-font">Guestbook</span>
-                    <h2 class="text-3xl md:text-4xl font-bold mt-2">응원 한 줄 남기기</h2>
-                    <p class="text-slate-500 dark:text-slate-400 mt-2">들러주신 흔적을 방명록으로 남겨주세요. (로컬 브라우저에 저장됩니다)</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- 방명록 작성 폼 -->
-                    <div class="md:col-span-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-lg h-fit">
-                        <form id="guestbook-form" class="space-y-4">
-                            <div>
-                                <label for="guest-name" class="block text-xs font-semibold text-slate-500 mb-1">이름</label>
-                                <input type="text" id="guest-name" required placeholder="홍길동" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-500 mb-1">캐릭터 아이콘</label>
-                                <div class="flex gap-2 justify-between">
-                                    <button type="button" class="emoji-btn p-2 rounded-lg border border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-lg flex-1 transition-all" data-emoji="💻">💻</button>
-                                    <button type="button" class="emoji-btn p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-lg flex-1 transition-all" data-emoji="🚀">🚀</button>
-                                    <button type="button" class="emoji-btn p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-lg flex-1 transition-all" data-emoji="☕">☕</button>
-                                    <button type="button" class="emoji-btn p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-lg flex-1 transition-all" data-emoji="🔥">🔥</button>
-                                </div>
-                            </div>
-                            <div>
-                                <label for="guest-msg" class="block text-xs font-semibold text-slate-500 mb-1">메시지</label>
-                                <textarea id="guest-msg" required placeholder="응원의 한마디를 남겨주세요!" rows="3" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none transition-colors"></textarea>
-                            </div>
-                            <button type="submit" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white rounded-lg text-sm font-semibold transition-all">남기기</button>
-                        </form>
-                    </div>
-
-                    <!-- 방명록 목록 -->
-                    <div class="md:col-span-2 space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar" id="guestbook-list">
-                        <!-- 동적 추가 -->
-                    </div>
                 </div>
             </div>
         </section>
