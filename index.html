@@ -429,9 +429,9 @@
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                             <div class="md:col-span-4">
                                 <span class="text-xs text-slate-400">인프라 운영 예산 비율</span>
-                                <div class="text-2xl font-bold text-slate-200 my-1">₩48,500 <span class="text-xs text-slate-400 font-normal">/ 월 예산 ₩100,000</span></div>
+                                <div class="text-2xl font-bold text-slate-200 my-1">₩83,500 <span class="text-xs text-slate-400 font-normal">/ 월 예산 ₩100,000</span></div>
                                 <div class="w-full bg-brand-border h-2 rounded-full overflow-hidden mt-2">
-                                    <div class="h-full bg-brand" style="width: 48.5%"></div>
+                                    <div class="h-full bg-brand" style="width: 83.5%"></div>
                                 </div>
                             </div>
                             <div class="md:col-span-8 grid grid-cols-2 gap-3 text-left">
@@ -440,14 +440,18 @@
                                     <span class="text-xs font-bold text-slate-300">₩13,000 / 월</span>
                                 </div>
                                 <div class="bg-[#050811] p-3 rounded-lg border border-brand-border/40">
-                                    <span class="block text-[10px] text-slate-500">OpenAI API</span>
-                                    <span class="text-xs font-bold text-slate-300">₩15,000 / 월</span>
+                                    <span class="block text-[10px] text-slate-500">Gemini Advanced (Ultra)</span>
+                                    <span class="text-xs font-bold text-brand font-mono">₩29,000 / 월</span>
                                 </div>
                                 <div class="bg-[#050811] p-3 rounded-lg border border-brand-border/40">
-                                    <span class="block text-[10px] text-slate-500">Cursor Pro</span>
-                                    <span class="text-xs font-bold text-slate-300">₩20,500 / 월</span>
+                                    <span class="block text-[10px] text-slate-500">ChatGPT Plus (기본)</span>
+                                    <span class="text-xs font-bold text-slate-300">₩27,500 / 월</span>
                                 </div>
                                 <div class="bg-[#050811] p-3 rounded-lg border border-brand-border/40">
+                                    <span class="block text-[10px] text-slate-500">CapCut Pro (기본)</span>
+                                    <span class="text-xs font-bold text-slate-300">₩14,000 / 월</span>
+                                </div>
+                                <div class="bg-[#050811] p-3 rounded-lg border border-brand-border/40 col-span-2 md:col-span-1">
                                     <span class="block text-[10px] text-slate-500">Vercel Pro</span>
                                     <span class="text-xs font-bold text-brand font-mono">Free Tier (₩0)</span>
                                 </div>
@@ -761,8 +765,8 @@
                     <!-- Inline Reply Form -->
                     <div id="reply-form-${msg.id}" class="mt-1 p-3 bg-[#050811]/60 border border-brand-border/40 rounded-xl hidden">
                         <div class="flex gap-2 mb-2">
-                            <input type="text" id="reply-name-${msg.id}" placeholder="이름" class="bg-[#0a101f] border border-brand-border/60 rounded px-2 py-1 text-[10px] text-slate-200 w-32 focus:outline-none focus:border-brand" value="${isOwner ? '👑 이루다 (Owner)' : ''}">
-                            <input type="text" id="reply-emoji-${msg.id}" value="${isOwner ? '💻' : '☕'}" class="bg-[#0a101f] border border-brand-border/60 rounded px-2 py-1 text-[10px] text-slate-200 w-8 text-center focus:outline-none" placeholder="이모지">
+                            <input type="text" id="reply-name-${msg.id}" placeholder="이름" class="bg-[#0a101f] border border-brand-border/60 rounded px-2 py-1 text-[10px] text-slate-200 w-32 focus:outline-none focus:border-brand" value="👑 이루다 (Owner)">
+                            <input type="text" id="reply-emoji-${msg.id}" value="💻" class="bg-[#0a101f] border border-brand-border/60 rounded px-2 py-1 text-[10px] text-slate-200 w-8 text-center focus:outline-none" placeholder="이모지">
                         </div>
                         <div class="flex gap-2">
                             <textarea id="reply-msg-${msg.id}" placeholder="답글을 남겨주세요..." rows="1" class="flex-grow bg-[#0a101f] border border-brand-border/60 rounded px-2 py-1 text-[10px] text-slate-200 focus:outline-none focus:border-brand resize-none"></textarea>
