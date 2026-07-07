@@ -700,27 +700,78 @@
             // Pre-seed if empty
             if(comments.length === 0) {
                 const seed = [
-                    { name: '김코딩', emoji: '💻', message: '사이트 포트폴리오 디자인이 정말 세련되고 깔끔하네요! 응원합니다.', time: '2026.07.06' },
-                    { name: '이스타트', emoji: '🚀', message: 'MindLog 감정 일기장 얼른 배포되어서 모바일로도 쓰고 싶어요. 기대 중입니다!', time: '2026.07.05' }
+                    { id: 'seed-1', name: '김코딩', emoji: '💻', message: '사이트 포트폴리오 디자인이 정말 세련되고 깔끔하네요! 응원합니다.', time: '2026.07.06', replies: [] },
+                    { id: 'seed-2', name: '이스타트', emoji: '🚀', message: 'MindLog 감정 일기장 얼른 배포되어서 모바일로도 쓰고 싶어요. 기대 중입니다!', time: '2026.07.05', replies: [] }
                 ];
                 localStorage.setItem('gb_comments', JSON.stringify(seed));
                 comments.push(...seed);
             }
 
             comments.forEach(msg => {
+                // Handle legacy comments that don't have id or replies
+                if (!msg.id) msg.id = 'comment-' + Math.random().toString(36).substr(2, 5);
+                if (!msg.replies) msg.replies = [];
+
                 const card = document.createElement('div');
-                card.className = 'p-5 bg-brand-card border border-brand-border rounded-2xl flex items-start gap-4';
+                card.className = 'p-5 bg-brand-card border border-brand-border rounded-2xl flex flex-col gap-3';
+                
+                const isOwner = localStorage.getItem('eruda_owner_unlocked') === 'true';
+                
+                // Generate replies list HTML
+                let repliesHtml = "";
+                if (msg.replies.length > 0) {
+                    repliesHtml = `<div class="mt-2 pl-4 border-l-2 border-brand/30 space-y-3">`;
+                    msg.replies.forEach(reply => {
+                        const isReplyOwner = reply.name.includes('Owner') || reply.name.includes('이루다');
+                        repliesHtml += `
+                            <div class="p-3 bg-[#050811]/50 border ${isReplyOwner ? 'border-brand/40 bg-brand-glow/5' : 'border-brand-border/40'} rounded-xl flex items-start gap-3">
+                                <div class="w-7 h-7 rounded-full bg-[#050811] border border-brand-border/50 flex items-center justify-center text-xs shrink-0 select-none">
+                                    ${reply.emoji}
+                                </div>
+                                <div class="flex-grow text-left">
+                                    <div class="flex justify-between items-center mb-0.5">
+                                        <span class="font-bold text-[11px] ${isReplyOwner ? 'text-brand' : 'text-slate-300'}">${reply.name}</span>
+                                        <span class="text-[8px] text-slate-500 code-font">${reply.time}</span>
+                                    </div>
+                                    <p class="text-[11px] text-slate-400 leading-relaxed">${reply.message}</p>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    repliesHtml += `</div>`;
+                }
+
                 card.innerHTML = `
-                    <div class="w-10 h-10 rounded-full bg-[#050811] border border-brand-border flex items-center justify-center text-lg shrink-0 select-none">
-                        ${msg.emoji}
-                    </div>
-                    <div class="flex-grow text-left">
-                        <div class="flex justify-between items-center mb-1">
-                            <span class="font-bold text-sm text-slate-200">${msg.name}</span>
-                            <span class="text-[10px] text-slate-500 code-font">${msg.time}</span>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-[#050811] border border-brand-border flex items-center justify-center text-lg shrink-0 select-none">
+                            ${msg.emoji}
                         </div>
-                        <p class="text-xs text-slate-400 leading-relaxed">${msg.message}</p>
+                        <div class="flex-grow text-left">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="font-bold text-sm text-slate-200">${msg.name}</span>
+                                <span class="text-[10px] text-slate-500 code-font">${msg.time}</span>
+                            </div>
+                            <p class="text-xs text-slate-400 leading-relaxed">${msg.message}</p>
+                            <button onclick="toggleReplyForm('${msg.id}')" class="text-[10px] text-slate-500 hover:text-brand mt-2.5 flex items-center gap-1 transition-colors">
+                                <i class="fa-solid fa-reply"></i> 답글 달기
+                            </button>
+                        </div>
                     </div>
+
+                    <!-- Inline Reply Form -->
+                    <div id="reply-form-${msg.id}" class="mt-1 p-3 bg-[#050811]/60 border border-brand-border/40 rounded-xl hidden">
+                        <div class="flex gap-2 mb-2">
+                            <input type="text" id="reply-name-${msg.id}" placeholder="이름" class="bg-[#0a101f] border border-brand-border/60 rounded px-2 py-1 text-[10px] text-slate-200 w-32 focus:outline-none focus:border-brand" value="${isOwner ? '👑 이루다 (Owner)' : ''}">
+                            <input type="text" id="reply-emoji-${msg.id}" value="${isOwner ? '💻' : '☕'}" class="bg-[#0a101f] border border-brand-border/60 rounded px-2 py-1 text-[10px] text-slate-200 w-8 text-center focus:outline-none" placeholder="이모지">
+                        </div>
+                        <div class="flex gap-2">
+                            <textarea id="reply-msg-${msg.id}" placeholder="답글을 남겨주세요..." rows="1" class="flex-grow bg-[#0a101f] border border-brand-border/60 rounded px-2 py-1 text-[10px] text-slate-200 focus:outline-none focus:border-brand resize-none"></textarea>
+                            <button onclick="addReply('${msg.id}')" class="bg-brand text-[#050811] px-3 py-1 rounded text-[10px] font-bold hover:brightness-110 shrink-0 transition-all">등록</button>
+                        </div>
+                    </div>
+
+                    <!-- Threaded Replies -->
+                    ${repliesHtml}
                 `;
                 list.appendChild(card);
             });
@@ -742,10 +793,12 @@
 
             const comments = JSON.parse(localStorage.getItem('gb_comments') || '[]');
             const newComment = {
+                id: 'comment-' + Date.now().toString() + Math.random().toString(36).substr(2, 4),
                 name,
                 emoji: selectedEmoji,
                 message,
-                time: timeStr
+                time: timeStr,
+                replies: []
             };
             comments.unshift(newComment);
             localStorage.setItem('gb_comments', JSON.stringify(comments));
@@ -753,6 +806,50 @@
 
             nameInput.value = "";
             msgInput.value = "";
+        }
+
+        function toggleReplyForm(id) {
+            const form = document.getElementById(`reply-form-${id}`);
+            if (form) {
+                form.classList.toggle('hidden');
+            }
+        }
+
+        function addReply(commentId) {
+            const nameInput = document.getElementById(`reply-name-${commentId}`);
+            const msgInput = document.getElementById(`reply-msg-${commentId}`);
+            const emojiInput = document.getElementById(`reply-emoji-${commentId}`);
+            
+            const name = nameInput.value.trim();
+            const message = msgInput.value.trim();
+            const emoji = emojiInput.value.trim();
+            if(!name || !message) return;
+
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const date = String(today.getDate()).padStart(2, '0');
+            const timeStr = `${year}.${month}.${date}`;
+
+            const comments = JSON.parse(localStorage.getItem('gb_comments') || '[]');
+            const commentIndex = comments.findIndex(c => c.id === commentId);
+            
+            if (commentIndex !== -1) {
+                const targetComment = comments[commentIndex];
+                if (!targetComment.replies) targetComment.replies = [];
+                
+                const newReply = {
+                    id: 'reply-' + Date.now().toString() + Math.random().toString(36).substr(2, 4),
+                    name,
+                    emoji: emoji || '☕',
+                    message,
+                    time: timeStr
+                };
+                
+                targetComment.replies.push(newReply);
+                localStorage.setItem('gb_comments', JSON.stringify(comments));
+                loadComments();
+            }
         }
 
         function switchTab(tab) {
